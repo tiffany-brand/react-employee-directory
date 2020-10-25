@@ -7,7 +7,13 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+
+
+
+
 function EmployeeTable(props) {
+
+    // props.handleSort("email", "asc");
     return (
         <TableContainer component={Paper}>
             <Table stickyHeader aria-label="Employee Table">
@@ -17,7 +23,7 @@ function EmployeeTable(props) {
                         <TableCell>First Name</TableCell>
                         <TableCell>Last Name</TableCell>
                         <TableCell>Gender</TableCell>
-                        <TableCell>Email</TableCell>
+                        <TableCell><span onClick={() => props.handleSort("email", "asc")}>Email</span></TableCell>
                         <TableCell>Phone Number</TableCell>
                         <TableCell>City</TableCell>
                         <TableCell>State</TableCell>
