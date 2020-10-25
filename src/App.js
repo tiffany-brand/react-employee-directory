@@ -1,11 +1,15 @@
 
-import './App.css';
+import Container from '@material-ui/core/Container';
+import Directory from './components/Directory';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Employee Directory</h1>
-    </div>
+    <Container>
+      <Directory />
+    </Container>
+
+
+
   );
 }
 
