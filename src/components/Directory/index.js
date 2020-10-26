@@ -5,15 +5,9 @@ import { API } from "../../utils/API";
 
 class Directory extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            employees: []
-        }
-        this.handleSort = this.handleSort.bind(this);
+    state = {
+        employees: []
     }
-
-
 
     componentDidMount() {
         API.getEmployees()
@@ -22,11 +16,11 @@ class Directory extends Component {
                 this.setState({
                     employees: response.data.results
                 })
-
             })
             .catch(err => console.log(err));
     }
 
+    // object sorting function from https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
     compareValues(key, order = 'asc') {
         return function innerSort(a, b) {
             if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
@@ -51,7 +45,8 @@ class Directory extends Component {
         };
     }
 
-    handleSort(column, order) {
+    // function to sort table by a given column
+    handleSort = (column, order) => {
         console.log(this.state.employees);
         let sorted = [...this.state.employees].sort(this.compareValues(column, order));
         this.setState({ employees: sorted });

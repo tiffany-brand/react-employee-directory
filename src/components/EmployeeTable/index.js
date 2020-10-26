@@ -21,7 +21,7 @@ function EmployeeTable(props) {
                     <TableRow>
                         <TableCell>Picture</TableCell>
                         <TableCell>First Name</TableCell>
-                        <TableCell>Last Name</TableCell>
+                        <TableCell><span onClick={() => props.handleSort("[name][last]", "asc")}>Last Name</span></TableCell>
                         <TableCell>Gender</TableCell>
                         <TableCell><span onClick={() => props.handleSort("email", "asc")}>Email</span></TableCell>
                         <TableCell>Phone Number</TableCell>
