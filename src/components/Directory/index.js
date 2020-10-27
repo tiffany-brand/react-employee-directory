@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography"
+import Grid from '@material-ui/core/Grid';
 import EmployeeTable from "../EmployeeTable";
 import Search from "../Search";
 import { API } from "../../utils/API";
 import { searchEmp } from "../../utils/searchEmp";
+import "./style.css";
 
 class Directory extends Component {
 
@@ -12,6 +14,7 @@ class Directory extends Component {
         loadedEmployees: [],
         search: ""
     }
+
 
     componentDidMount() {
         API.getEmployees()
@@ -98,7 +101,9 @@ class Directory extends Component {
         return (
             <div>
                 <Typography variant="h2" align="center">Employee Directory</Typography>
-                <Search employees={this.state.employees} handleInputChange={this.handleInputChange} />
+                <Grid className="Directory-search" container justify="center">
+                    <Search display="flex" alignItems="center" employees={this.state.employees} handleInputChange={this.handleInputChange} />
+                </Grid>
                 <EmployeeTable employees={this.state.employees} handleSort={this.handleSort} />
             </div>
         )
