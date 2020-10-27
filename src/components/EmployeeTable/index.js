@@ -20,27 +20,27 @@ function EmployeeTable(props) {
                 <TableHead>
                     <TableRow>
                         <TableCell>Picture</TableCell>
-                        <TableCell>First Name</TableCell>
-                        <TableCell><span onClick={() => props.handleSort("[name][last]", "asc")}>Last Name</span></TableCell>
-                        <TableCell>Gender</TableCell>
+                        <TableCell><span onClick={() => props.handleSort("firstName", "asc")}>First Name</span></TableCell>
+                        <TableCell><span onClick={() => props.handleSort("lastName", "asc")}>Last Name</span></TableCell>
+                        <TableCell><span onClick={() => props.handleSort("gender", "asc")}>Gender</span></TableCell>
                         <TableCell><span onClick={() => props.handleSort("email", "asc")}>Email</span></TableCell>
-                        <TableCell>Phone Number</TableCell>
-                        <TableCell>City</TableCell>
-                        <TableCell>State</TableCell>
+                        <TableCell><span onClick={() => props.handleSort("phone", "asc")}>Phone Number</span></TableCell>
+                        <TableCell><span onClick={() => props.handleSort("city", "asc")}>City</span></TableCell>
+                        <TableCell><span onClick={() => props.handleSort("state", "asc")}>State</span></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {
                         props.employees.map(emp => {
-                            return <TableRow key={emp.id.value}>
-                                <TableCell align="left"><img alt={`${emp.name.first} ${emp.name.last}`} src={emp.picture.thumbnail}></img></TableCell>
-                                <TableCell align="left">{emp.name.first}</TableCell>
-                                <TableCell align="left">{emp.name.last}</TableCell>
+                            return <TableRow key={emp.id}>
+                                <TableCell align="left"><img alt={`${emp.firstName} ${emp.lastName}`} src={emp.picture}></img></TableCell>
+                                <TableCell align="left">{emp.firstName}</TableCell>
+                                <TableCell align="left">{emp.lastName}</TableCell>
                                 <TableCell align="left">{emp.gender}</TableCell>
                                 <TableCell align="left">{emp.email}</TableCell>
                                 <TableCell align="left">{emp.phone}</TableCell>
-                                <TableCell align="left">{emp.location.city}</TableCell>
-                                <TableCell align="left">{emp.location.state}</TableCell>
+                                <TableCell align="left">{emp.city}</TableCell>
+                                <TableCell align="left">{emp.state}</TableCell>
                             </TableRow>
                         })
                     }
