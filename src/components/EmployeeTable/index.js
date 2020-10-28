@@ -41,7 +41,7 @@ function EmployeeTable(props) {
                     </TableRow>
                 </TableHead>
                 {/* Create table rows from employees array */}
-                <TableBody stripedRows>
+                <TableBody>
                     {
                         props.employees.map(emp => {
                             return <TableRow hover key={emp.id}>
