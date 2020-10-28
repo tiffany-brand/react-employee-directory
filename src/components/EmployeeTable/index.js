@@ -41,10 +41,10 @@ function EmployeeTable(props) {
                     </TableRow>
                 </TableHead>
                 {/* Create table rows from employees array */}
-                <TableBody>
+                <TableBody stripedRows>
                     {
                         props.employees.map(emp => {
-                            return <TableRow key={emp.id}>
+                            return <TableRow hover key={emp.id}>
                                 <TableCell align="left"><img alt={`${emp.firstName} ${emp.lastName}`} src={emp.picture}></img></TableCell>
                                 <TableCell align="left">{emp.firstName}</TableCell>
                                 <TableCell align="left">{emp.lastName}</TableCell>

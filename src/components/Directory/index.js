@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography"
 import Grid from '@material-ui/core/Grid';
+import Header from "../Header";
 import EmployeeTable from "../EmployeeTable";
 import Search from "../Search";
 import { API } from "../../utils/API";
@@ -25,7 +26,7 @@ class Directory extends Component {
                 let empData = response.data.results.map(emp => {
                     return {
                         id: emp.id.value,
-                        picture: emp.picture.thumbnail,
+                        picture: emp.picture.medium,
                         firstName: emp.name.first,
                         lastName: emp.name.last,
                         gender: emp.gender,
@@ -85,8 +86,8 @@ class Directory extends Component {
 
     render() {
         return (
-            <div>
-                <Typography variant="h2" align="center">Employee Directory</Typography>
+            <div className="Directory-container">
+                <Header />
                 <Grid className="Directory-search" container justify="center">
                     <Search display="flex" alignItems="center" employees={this.state.employees} handleInputChange={this.handleInputChange} />
                 </Grid>
