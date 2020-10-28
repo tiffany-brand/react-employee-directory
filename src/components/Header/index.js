@@ -8,9 +8,15 @@ function Header() {
 
 
     return (
-        <Grid className="Header-heading" container justify="center">
-            <Typography variant="h2" align="center">Employee Directory</Typography>
-        </Grid>
+        <>
+            <Grid className="Header-heading" container justify="center">
+                <Typography variant="h2" align="center">Employee Directory</Typography>
+                <Grid className="Header-instructions" container justify="center">
+                    <Typography variant="p" align="center">Click the headings to sort or search to filter results. </Typography>
+                </Grid>
+            </Grid>
+
+        </>
     )
 
 }
