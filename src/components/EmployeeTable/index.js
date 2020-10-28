@@ -8,16 +8,12 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Paper from '@material-ui/core/Paper';
 
-
-
-
-
 function EmployeeTable(props) {
 
-    // props.handleSort("email", "asc");
     return (
         <TableContainer component={Paper}>
             <Table stickyHeader aria-label="Employee Table">
+                {/* Table headings with sort icons and click handlers */}
                 <TableHead>
                     <TableRow>
                         <TableCell>Picture</TableCell>
@@ -44,6 +40,7 @@ function EmployeeTable(props) {
                         </TableCell>
                     </TableRow>
                 </TableHead>
+                {/* Create table rows from employees array */}
                 <TableBody>
                     {
                         props.employees.map(emp => {
