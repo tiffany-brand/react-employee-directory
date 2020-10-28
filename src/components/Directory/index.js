@@ -17,7 +17,7 @@ class Directory extends Component {
         order: "asc"
     }
 
-
+    // Get employees from API and store required fields in employees state
     componentDidMount() {
         API.getEmployees()
             .then(response => {
@@ -57,6 +57,7 @@ class Directory extends Component {
         });
     }
 
+    // handle search input - filter table when user inputs characters into search
     handleInputChange = event => {
         // Getting the value and name of the input which triggered the change
         let value = event.target.value;
@@ -66,6 +67,7 @@ class Directory extends Component {
         this.setState({
             [name]: value
         }, () => {
+            // filter the employee list
             if (this.state.search) {
                 let filteredEmps = util.searchEmp(this.state.search, this.state.loadedEmployees);
                 this.setState({
@@ -80,8 +82,6 @@ class Directory extends Component {
             }
         });
     };
-
-
 
     render() {
         return (
