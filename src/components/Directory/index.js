@@ -12,7 +12,9 @@ class Directory extends Component {
     state = {
         employees: [],
         loadedEmployees: [],
-        search: ""
+        search: "",
+        orderBy: "",
+        order: "asc"
     }
 
 
@@ -70,7 +72,12 @@ class Directory extends Component {
     handleSort = (column, order) => {
         console.log(this.state.employees);
         let sorted = [...this.state.employees].sort(this.compareValues(column, order));
-        this.setState({ employees: sorted });
+        let newOrder = order === "asc" ? "desc" : "asc"
+        this.setState({
+            employees: sorted,
+            orderBy: column,
+            order: newOrder
+        });
     }
 
     handleInputChange = event => {
@@ -85,11 +92,13 @@ class Directory extends Component {
             if (this.state.search) {
                 let filteredEmps = searchEmp.searchEmp(this.state.search, this.state.loadedEmployees);
                 this.setState({
-                    employees: filteredEmps
+                    employees: filteredEmps,
+                    orderBy: ""
                 })
             } else {
                 this.setState({
-                    employees: this.state.loadedEmployees
+                    employees: this.state.loadedEmployees,
+                    orderBy: ""
                 })
             }
         });
@@ -104,7 +113,7 @@ class Directory extends Component {
                 <Grid className="Directory-search" container justify="center">
                     <Search display="flex" alignItems="center" employees={this.state.employees} handleInputChange={this.handleInputChange} />
                 </Grid>
-                <EmployeeTable employees={this.state.employees} handleSort={this.handleSort} />
+                <EmployeeTable employees={this.state.employees} handleSort={this.handleSort} orderBy={this.state.orderBy} order={this.state.order} />
             </div>
         )
     }
