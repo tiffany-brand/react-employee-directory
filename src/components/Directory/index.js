@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import EmployeeTable from "../EmployeeTable";
 import Search from "../Search";
 import { API } from "../../utils/API";
-import { searchEmp } from "../../utils/searchEmp";
+import { util } from "../../utils/utils";
 import "./style.css";
 
 class Directory extends Component {
@@ -43,35 +43,12 @@ class Directory extends Component {
             .catch(err => console.log(err));
     }
 
-    // object sorting function from https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
-    compareValues(key, order = 'asc') {
-        return function innerSort(a, b) {
-            if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-                // property doesn't exist on either object
-                return 0;
-            }
 
-            const varA = (typeof a[key] === 'string')
-                ? a[key].toUpperCase() : a[key];
-            const varB = (typeof b[key] === 'string')
-                ? b[key].toUpperCase() : b[key];
-
-            let comparison = 0;
-            if (varA > varB) {
-                comparison = 1;
-            } else if (varA < varB) {
-                comparison = -1;
-            }
-            return (
-                (order === 'desc') ? (comparison * -1) : comparison
-            );
-        };
-    }
 
     // function to sort table by a given column
     handleSort = (column, order) => {
         console.log(this.state.employees);
-        let sorted = [...this.state.employees].sort(this.compareValues(column, order));
+        let sorted = [...this.state.employees].sort(util.compareValues(column, order));
         let newOrder = order === "asc" ? "desc" : "asc"
         this.setState({
             employees: sorted,
@@ -90,7 +67,7 @@ class Directory extends Component {
             [name]: value
         }, () => {
             if (this.state.search) {
-                let filteredEmps = searchEmp.searchEmp(this.state.search, this.state.loadedEmployees);
+                let filteredEmps = util.searchEmp(this.state.search, this.state.loadedEmployees);
                 this.setState({
                     employees: filteredEmps,
                     orderBy: ""
